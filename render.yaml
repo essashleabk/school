@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: school_site-django
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn school_site.wsgi:application
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: school_site.settings
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: False
